@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "linear_linked_def.h": "c",
+        "tree_traverse.h": "c",
+        "stack_sequence_def.h": "c",
+        "tree_traverse_stack.h": "c",
+        "queue_sequence_def.h": "c",
+        "stdlib.h": "c",
+        "QUEUE_SEQUENCE_DEF.H": "cpp"
+    }
+}

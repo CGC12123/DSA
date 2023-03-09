@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "linear_sequence_def.h": "c",
+        "stack_sequence_def.h": "c",
+        "queue_sequence_def.h": "c",
+        "stack_linked_def.h": "c",
+        "queue_linked_def.h": "c",
+        "linear_linked_def.h": "c",
+        "stdlib.h": "c"
+    }
+}
