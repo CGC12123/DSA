@@ -1,0 +1,3 @@
+/home/cgc/Library/dsa/DSA/Structure/Experiment/sy1/build/CMakeFiles/main.dir
+/home/cgc/Library/dsa/DSA/Structure/Experiment/sy1/build/CMakeFiles/edit_cache.dir
+/home/cgc/Library/dsa/DSA/Structure/Experiment/sy1/build/CMakeFiles/rebuild_cache.dir

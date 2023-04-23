@@ -1,20 +1,15 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**",
-                "E:\\Library\\Structure\\learn_demo\\Structure\\Experiment\\sy1"
+                "${workspaceFolder}/**"
             ],
-            "defines": [
-                "_DEBUG",
-                "UNICODE",
-                "_UNICODE"
-            ],
-            "compilerPath": "D:\\C CODE PATH\\mingw64\\bin\\gcc.exe",
+            "defines": [],
+            "compilerPath": "/usr/bin/clang",
             "cStandard": "c17",
-            "cppStandard": "gnu++14",
-            "intelliSenseMode": "windows-gcc-x64"
+            "cppStandard": "c++14",
+            "intelliSenseMode": "linux-clang-x64"
         }
     ],
     "version": 4
