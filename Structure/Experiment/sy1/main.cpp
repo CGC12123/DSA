@@ -20,5 +20,6 @@ int main()
     {
         cout << A[j] << ",";
     }
+    cout << endl;
     return 0;
 }
