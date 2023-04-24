@@ -5,6 +5,5 @@ using namespace std;
 
 int main()
 {
-    cout << 66 << endl;
     return 0;
 }
