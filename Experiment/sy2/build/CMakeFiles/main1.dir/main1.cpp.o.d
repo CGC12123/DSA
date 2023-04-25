@@ -1,5 +1,5 @@
-CMakeFiles/main.dir/main.cpp.o: \
- /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cpp \
+CMakeFiles/main1.dir/main1.cpp.o: \
+ /home/cgc/Library/dsa/DSA/Experiment/sy2/main1.cpp \
  /usr/include/stdc-predef.h \
  /home/cgc/Library/dsa/DSA/Experiment/sy2/head.h \
  /usr/include/c++/9/iostream \

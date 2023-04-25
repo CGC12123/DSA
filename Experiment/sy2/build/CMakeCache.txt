@@ -148,7 +148,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=sy1
+CMAKE_PROJECT_NAME:STATIC=sy2
 
 //Value Computed by CMake
 CMAKE_PROJECT_VERSION:STATIC=0.1.0
@@ -235,6 +235,15 @@ sy1_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 sy1_SOURCE_DIR:STATIC=/home/cgc/Library/dsa/DSA/Experiment/sy2
+
+//Value Computed by CMake
+sy2_BINARY_DIR:STATIC=/home/cgc/Library/dsa/DSA/Experiment/sy2/build
+
+//Value Computed by CMake
+sy2_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+sy2_SOURCE_DIR:STATIC=/home/cgc/Library/dsa/DSA/Experiment/sy2
 
 
 ########################
