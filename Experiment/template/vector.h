@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-class Array 
+class Vector 
 {
   private:
     int *arr;
@@ -12,9 +12,9 @@ class Array
     int capacity; // 容量
 
   public:
-    Array(int capa, int init_num); // 构造函数 初始化容量及初始数值
+    Vector(int capa, int init_num); // 构造函数 初始化容量及初始数值
 
-    ~Array(); // 析构函数
+    ~Vector(); // 析构函数
 
     void expand(); // 扩容函数 容量扩容两倍
 

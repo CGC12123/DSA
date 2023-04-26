@@ -1,6 +1,6 @@
 #include "vector.h"
 
-Array::Array(int capa, int init_num) 
+Vector::Vector(int capa, int init_num) 
 {
     capacity = capa;
     arr = new int[capacity];
@@ -11,12 +11,12 @@ Array::Array(int capa, int init_num)
     size = 0;
 }
 
-Array::~Array()
+Vector::~Vector()
 {
     delete [] arr;
 }
 
-void Array::expand() 
+void Vector::expand() 
 {
     if(size < capacity)
         return;
@@ -37,7 +37,7 @@ void Array::expand()
     }
 }
 
-void Array::add_vector(int* array)
+void Vector::add_vector(int* array)
 {
     expand();
 
@@ -50,7 +50,7 @@ void Array::add_vector(int* array)
 }
 
 
-int Array::findIndex(int value) 
+int Vector::findIndex(int value) 
 {
     for (int i = 0; i < size; i++) 
     {
@@ -64,7 +64,7 @@ int Array::findIndex(int value)
     return -1;
 }
 
-void Array::insert(int index, int value) 
+void Vector::insert(int index, int value) 
 {
     expand();
 
@@ -77,12 +77,12 @@ void Array::insert(int index, int value)
     arr[index] = value;
 }
 
-int Array::get_size() 
+int Vector::get_size() 
 {
     return size;
 }
 
-void Array::removeDuplicates2() {
+void Vector::removeDuplicates2() {
     sort(arr, arr + size);
     int i = 0;
     while (i < size - 1) 
@@ -102,12 +102,12 @@ void Array::removeDuplicates2() {
     }
 }
 
-int Array::get(int index) 
+int Vector::get(int index) 
 {
     return arr[index];
 }
 
-void Array::show()
+void Vector::show()
 {
     for (int i = 0; i < size; i++) 
     {
