@@ -174,10 +174,21 @@ CMakeFiles/main.dir/head.cpp.o
  /usr/include/c++/9/bits/ostream.tcc
  /usr/include/c++/9/istream
  /usr/include/c++/9/bits/istream.tcc
+ /usr/include/c++/9/algorithm
+ /usr/include/c++/9/utility
+ /usr/include/c++/9/bits/stl_relops.h
+ /usr/include/c++/9/bits/stl_algo.h
+ /usr/include/c++/9/bits/algorithmfwd.h
+ /usr/include/c++/9/bits/stl_heap.h
+ /usr/include/c++/9/bits/stl_tempbuf.h
+ /usr/include/c++/9/bits/stl_construct.h
+ /usr/include/c++/9/bits/uniform_int_dist.h
+ /usr/include/c++/9/limits
 
 CMakeFiles/main.dir/main.cpp.o
  /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cpp
  /usr/include/stdc-predef.h
+ /home/cgc/Library/dsa/DSA/Experiment/sy2/head.h
  /usr/include/c++/9/iostream
  /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h
  /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h
@@ -347,7 +358,14 @@ CMakeFiles/main.dir/main.cpp.o
  /usr/include/c++/9/bits/ostream.tcc
  /usr/include/c++/9/istream
  /usr/include/c++/9/bits/istream.tcc
+ /usr/include/c++/9/algorithm
  /usr/include/c++/9/utility
  /usr/include/c++/9/bits/stl_relops.h
- /home/cgc/Library/dsa/DSA/Experiment/sy2/head.h
+ /usr/include/c++/9/bits/stl_algo.h
+ /usr/include/c++/9/bits/algorithmfwd.h
+ /usr/include/c++/9/bits/stl_heap.h
+ /usr/include/c++/9/bits/stl_tempbuf.h
+ /usr/include/c++/9/bits/stl_construct.h
+ /usr/include/c++/9/bits/uniform_int_dist.h
+ /usr/include/c++/9/limits
 

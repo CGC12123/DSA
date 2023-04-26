@@ -23,6 +23,8 @@ class Array {
     int get(int index);
 
     void show();
+
+    bool judege();
 }; 
 
 #endif

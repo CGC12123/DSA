@@ -43,5 +43,16 @@ int main()
     cout << "after removeDuplicates: " << endl;
     arr2.show();
 
+    cout << endl;
+
+    // plus
+    cout << "array3: {1, 3, 4, 10, 8, 9, 22, 6, 7, 9}" << endl;
+    int array3[20] = {1, 3, 4, 10, 8, 9, 22, 6, 7, 9};
+    Array arr3(10, array3);
+    cout << "if orderly: " << arr3.judege() << endl;
+
+    arr3.removeDuplicates2();
+    arr3.show();
+
     return 0;
 }

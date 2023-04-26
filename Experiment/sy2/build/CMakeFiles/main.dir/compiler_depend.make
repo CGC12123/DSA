@@ -172,10 +172,21 @@ CMakeFiles/main.dir/head.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/head.cp
   /usr/include/c++/9/bits/basic_ios.tcc \
   /usr/include/c++/9/bits/ostream.tcc \
   /usr/include/c++/9/istream \
-  /usr/include/c++/9/bits/istream.tcc
+  /usr/include/c++/9/bits/istream.tcc \
+  /usr/include/c++/9/algorithm \
+  /usr/include/c++/9/utility \
+  /usr/include/c++/9/bits/stl_relops.h \
+  /usr/include/c++/9/bits/stl_algo.h \
+  /usr/include/c++/9/bits/algorithmfwd.h \
+  /usr/include/c++/9/bits/stl_heap.h \
+  /usr/include/c++/9/bits/stl_tempbuf.h \
+  /usr/include/c++/9/bits/stl_construct.h \
+  /usr/include/c++/9/bits/uniform_int_dist.h \
+  /usr/include/c++/9/limits
 
 CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cpp \
   /usr/include/stdc-predef.h \
+  /home/cgc/Library/dsa/DSA/Experiment/sy2/head.h \
   /usr/include/c++/9/iostream \
   /usr/include/x86_64-linux-gnu/c++/9/bits/c++config.h \
   /usr/include/x86_64-linux-gnu/c++/9/bits/os_defines.h \
@@ -345,16 +356,23 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
   /usr/include/c++/9/bits/ostream.tcc \
   /usr/include/c++/9/istream \
   /usr/include/c++/9/bits/istream.tcc \
+  /usr/include/c++/9/algorithm \
   /usr/include/c++/9/utility \
   /usr/include/c++/9/bits/stl_relops.h \
-  /home/cgc/Library/dsa/DSA/Experiment/sy2/head.h
+  /usr/include/c++/9/bits/stl_algo.h \
+  /usr/include/c++/9/bits/algorithmfwd.h \
+  /usr/include/c++/9/bits/stl_heap.h \
+  /usr/include/c++/9/bits/stl_tempbuf.h \
+  /usr/include/c++/9/bits/stl_construct.h \
+  /usr/include/c++/9/bits/uniform_int_dist.h \
+  /usr/include/c++/9/limits
 
+
+/home/cgc/Library/dsa/DSA/Experiment/sy2/main.cpp:
 
 /usr/include/c++/9/bits/stl_relops.h:
 
 /usr/include/c++/9/utility:
-
-/home/cgc/Library/dsa/DSA/Experiment/sy2/main.cpp:
 
 /usr/include/c++/9/bits/istream.tcc:
 
@@ -367,6 +385,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 /usr/include/x86_64-linux-gnu/c++/9/bits/ctype_inline.h:
 
 /usr/include/c++/9/bits/streambuf_iterator.h:
+
+/usr/include/c++/9/bits/stl_algo.h:
 
 /usr/include/c++/9/bits/basic_ios.h:
 
@@ -428,6 +448,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 
 /usr/include/x86_64-linux-gnu/bits/types/__FILE.h:
 
+/usr/include/c++/9/bits/stl_construct.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/9/include/stddef.h:
 
 /usr/include/c++/9/bits/basic_string.h:
@@ -480,6 +502,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 
 /usr/include/x86_64-linux-gnu/sys/cdefs.h:
 
+/usr/include/c++/9/algorithm:
+
 /usr/include/c++/9/bits/locale_facets.h:
 
 /usr/include/c++/9/bits/functexcept.h:
@@ -493,6 +517,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 /usr/include/wchar.h:
 
 /usr/include/x86_64-linux-gnu/gnu/stubs-64.h:
+
+/usr/include/c++/9/bits/uniform_int_dist.h:
 
 /usr/include/c++/9/bits/functional_hash.h:
 
@@ -515,6 +541,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 /usr/include/c++/9/type_traits:
 
 /usr/include/c++/9/bits/memoryfwd.h:
+
+/usr/include/c++/9/limits:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
 
@@ -656,6 +684,8 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h:
 
+/usr/include/c++/9/bits/algorithmfwd.h:
+
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
@@ -680,7 +710,11 @@ CMakeFiles/main.dir/main.cpp.o: /home/cgc/Library/dsa/DSA/Experiment/sy2/main.cp
 
 /usr/include/c++/9/bits/cxxabi_forced.h:
 
+/usr/include/c++/9/bits/stl_tempbuf.h:
+
 /usr/include/c++/9/ext/alloc_traits.h:
+
+/usr/include/c++/9/bits/stl_heap.h:
 
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
