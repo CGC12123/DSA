@@ -1,0 +1,6 @@
+#include "../template/vector.h"
+
+int main()
+{
+    return 0;
+}
