@@ -18,7 +18,7 @@ class Vector
 
     void expand(); // 扩容函数 容量扩容两倍
 
-    void add_vector(int* array); // 填入数组 
+    void add_vector(int* array, int lo, int hi); // 填入数组 
 
     int findIndex(int value); // 查询索引对应数值
 

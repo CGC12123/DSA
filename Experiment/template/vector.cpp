@@ -37,16 +37,15 @@ void Vector::expand()
     }
 }
 
-void Vector::add_vector(int* array)
+void Vector::add_vector(int* array, int lo, int hi)
 {
     expand();
 
-    for (int i = 0; i < sizeof(array); i++) 
+    while (lo < hi) 
     {
-        arr[i] = array[i];
+        arr[size ++] = array[lo ++];
     }
 
-    size = sizeof(array);
 }
 
 
