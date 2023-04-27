@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp" "CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o" "gcc" "CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o.d"
-  "/home/cgc/Library/dsa/DSA/Experiment/sy3/main.cpp" "CMakeFiles/main.dir/main.cpp.o" "gcc" "CMakeFiles/main.dir/main.cpp.o.d"
+  "/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp" "CMakeFiles/test.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o" "gcc" "CMakeFiles/test.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o.d"
+  "/home/cgc/Library/dsa/DSA/Experiment/sy3/test.cpp" "CMakeFiles/test.dir/test.cpp.o" "gcc" "CMakeFiles/test.dir/test.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

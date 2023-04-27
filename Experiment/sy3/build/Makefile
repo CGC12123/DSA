@@ -129,6 +129,30 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+home/cgc/Library/dsa/DSA/Experiment/template/vector.o: home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
+.PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.o
+
+# target to build an object file
+home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
+.PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
+
+home/cgc/Library/dsa/DSA/Experiment/template/vector.i: home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
+.PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.i
+
+# target to preprocess a source file
+home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
+.PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
+
+home/cgc/Library/dsa/DSA/Experiment/template/vector.s: home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
+.PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.s
+
+# target to generate assembly for a file
+home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
+.PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +186,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
+	@echo "... home/cgc/Library/dsa/DSA/Experiment/template/vector.o"
+	@echo "... home/cgc/Library/dsa/DSA/Experiment/template/vector.i"
+	@echo "... home/cgc/Library/dsa/DSA/Experiment/template/vector.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
