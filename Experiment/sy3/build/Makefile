@@ -117,24 +117,24 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named main1
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+main1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main1
+.PHONY : main1
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+main1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/build
+.PHONY : main1/fast
 
 home/cgc/Library/dsa/DSA/Experiment/template/vector.o: home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
 .PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.o
 
 # target to build an object file
 home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
 .PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o
 
 home/cgc/Library/dsa/DSA/Experiment/template/vector.i: home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
@@ -142,7 +142,7 @@ home/cgc/Library/dsa/DSA/Experiment/template/vector.i: home/cgc/Library/dsa/DSA/
 
 # target to preprocess a source file
 home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
 .PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.i
 
 home/cgc/Library/dsa/DSA/Experiment/template/vector.s: home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
@@ -150,32 +150,32 @@ home/cgc/Library/dsa/DSA/Experiment/template/vector.s: home/cgc/Library/dsa/DSA/
 
 # target to generate assembly for a file
 home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
 .PHONY : home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+main1.o: main1.cpp.o
+.PHONY : main1.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
+main1.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/main1.cpp.o
+.PHONY : main1.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+main1.i: main1.cpp.i
+.PHONY : main1.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
+main1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/main1.cpp.i
+.PHONY : main1.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+main1.s: main1.cpp.s
+.PHONY : main1.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
+main1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main1.dir/build.make CMakeFiles/main1.dir/main1.cpp.s
+.PHONY : main1.cpp.s
 
 # Help Target
 help:
@@ -185,13 +185,13 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main"
+	@echo "... main1"
 	@echo "... home/cgc/Library/dsa/DSA/Experiment/template/vector.o"
 	@echo "... home/cgc/Library/dsa/DSA/Experiment/template/vector.i"
 	@echo "... home/cgc/Library/dsa/DSA/Experiment/template/vector.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... main1.o"
+	@echo "... main1.i"
+	@echo "... main1.s"
 .PHONY : help
 
 
