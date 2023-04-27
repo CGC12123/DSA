@@ -27,6 +27,14 @@ class Vector
     int get_size();
 
     void removeDuplicates2();
+    
+    int binSearchA(int target, int left, int right);
+
+    int binSearchB(int target, int left, int right);
+
+    int binSearchC(int target, int left, int right);
+
+    void Sort();
 
     int get(int index);
 

@@ -125,3 +125,43 @@ bool Vector::judege()
     }
     return true;
 }
+
+int Vector::binSearchA(int target, int left, int right)
+{
+    while (left <= right) 
+    {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == target) 
+            return mid;
+        else if (arr[mid] < target) 
+            left = mid + 1; 
+        else 
+            right = mid - 1;
+    }
+    return -1;
+}
+
+int Vector::binSearchB(int target, int left, int right)
+{
+    while(1 < right - left)
+    {
+        int mi = (right + left) >> 1;
+        (target < arr[mi]) ? right = mi : left = mi;
+    }
+    return (target == arr[left]) ? left : -1;
+}
+
+int Vector::binSearchC(int target, int left, int right)
+{
+    while(right > left)
+    {
+        int mi = (right + left) >> 1;
+        (target < arr[mi]) ? right = mi : left = mi + 1;
+    }
+    return --left;
+}
+
+void Vector::Sort()
+{
+    sort(arr, arr + size);
+}
