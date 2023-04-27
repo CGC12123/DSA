@@ -30,6 +30,8 @@ class Vector
 
     int get(int index);
 
+    bool judege(); // 判断是否有序
+
     void show();
 }; 
 
