@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/home/cgc/Library/dsa/DSA/Experiment/template/vector.cpp.o -o main 
