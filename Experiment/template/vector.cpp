@@ -48,7 +48,6 @@ void Vector::add_vector(int* array, int lo, int hi)
 
 }
 
-
 int Vector::findIndex(int value) 
 {
     for (int i = 0; i < size; i++) 
@@ -163,4 +162,55 @@ int Vector::binSearchC(int target, int left, int right)
 void Vector::Sort()
 {
     sort(arr, arr + size);
+}
+
+void Vector::merge(int left, int mi, int right) // mi为界
+{
+    // int* A = arr + left;
+    // int lb = mi - left;
+    // int* B = new int[lb];
+    // for(int i = 0; i < lb; B[i] = A[i++]);
+    // int lc = right - mi;
+    // int* C = arr + mi;
+    // for(int i = 0, j = 0, k = 0; (j < lb) || (k < lc);)
+    // {
+    //     if((j < lb) && (!(k < lc) || (B[j] <= C[k])))
+    //         A[i++] = B[j++];
+    //     if((k < lc) && (!(j < lb) || (C[k] <= B[j])))
+    //         A[i++] = C[k++];
+    // }
+    // delete []B;
+    int n1 = mi - left + 1, n2 = right - mi;
+    int* tmp = new int[n1 + n2];
+    int p = 0, p1 = left, p2 = mi + 1;
+    
+    while (p1 <= mi && p2 <= right) 
+    {
+        if (arr[p1] <= arr[p2]) tmp[p++] = arr[p1++];
+        else tmp[p++] = arr[p2++];
+    }
+    
+    while (p1 <= mi) tmp[p++] = arr[p1++];
+    while (p2 <= right) tmp[p++] = arr[p2++];
+    
+    for (int i = 0; i < p; ++i) arr[left + i] = tmp[i];
+    
+    delete[] tmp;
+}
+
+void Vector::mergeSort(int l, int r)
+{
+    // if(right - left < 2)
+    //     return;
+    // int mi = (left + right) >> 1;
+    // mergeSort(left, mi);
+    // mergeSort(mi, right);
+    // merge(left, mi, right);
+    if (l < r) 
+    {
+        int m = l + (r - l) / 2;
+        mergeSort(l, m);
+        mergeSort(m + 1, r);
+        merge(l, m, r);
+    }
 }

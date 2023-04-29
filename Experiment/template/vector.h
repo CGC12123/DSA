@@ -36,6 +36,10 @@ class Vector
 
     void Sort();
 
+    void merge(int left, int mi, int right);
+
+    void mergeSort(int left, int right);
+
     int get(int index);
 
     bool judege(); // 判断是否有序
