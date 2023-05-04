@@ -181,20 +181,6 @@ void Vector::Sort()
 
 void Vector::merge(int left, int mi, int right) // mi为界
 {
-    // int* A = arr + left;
-    // int lb = mi - left;
-    // int* B = new int[lb];
-    // for(int i = 0; i < lb; B[i] = A[i++]);
-    // int lc = right - mi;
-    // int* C = arr + mi;
-    // for(int i = 0, j = 0, k = 0; (j < lb) || (k < lc);)
-    // {
-    //     if((j < lb) && (!(k < lc) || (B[j] <= C[k])))
-    //         A[i++] = B[j++];
-    //     if((k < lc) && (!(j < lb) || (C[k] <= B[j])))
-    //         A[i++] = C[k++];
-    // }
-    // delete []B;
     int n1 = mi - left + 1, n2 = right - mi;
     int* tmp = new int[n1 + n2];
     int p = 0, p1 = left, p2 = mi + 1;
@@ -215,12 +201,6 @@ void Vector::merge(int left, int mi, int right) // mi为界
 
 void Vector::mergeSort(int l, int r)
 {
-    // if(right - left < 2)
-    //     return;
-    // int mi = (left + right) >> 1;
-    // mergeSort(left, mi);
-    // mergeSort(mi, right);
-    // merge(left, mi, right);
     if (l < r) 
     {
         int m = l + (r - l) / 2;
