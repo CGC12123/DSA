@@ -124,6 +124,21 @@ bool Vector::judege()
     return true;
 }
 
+void Vector::bubblesort(int start, int end)
+{
+    for (int i = start; i <= end; i++) 
+    {
+      for (int j = start; j <= end - i + start; j++) 
+      {
+        if (arr[j] > arr[j + 1]) 
+        {
+          swap(arr[j], arr[j + 1]);
+        }
+      }
+    }
+  
+}
+
 int Vector::binSearchA(int target, int left, int right)
 {
     while (left <= right) 

@@ -2,6 +2,8 @@
 #define __VECTOR_H
 #include "iostream"
 #include <algorithm>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 class Vector 
@@ -27,6 +29,8 @@ class Vector
     int get_size();
 
     void removeDuplicates2();
+
+    void bubblesort(int start, int end);
     
     int binSearchA(int target, int left, int right);
 
