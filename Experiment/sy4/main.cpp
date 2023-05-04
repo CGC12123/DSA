@@ -30,20 +30,31 @@ int main()
     // 以下为对比归并与冒泡
     cout << endl;
     cout << "The following is a comparison of bubbling and merging" << endl;
+    cout << "Count a thousand random data to sort and record time" << endl;
     cout << endl;
 
-    Vector UnSesrchbubble(8, -1);
-    UnSesrchbubble.add_vector(UnSortedVector31, 0, 8);
+    int rand_vector[1000];
+    // 初始化随机种子
+    srand(time(0)); 
 
-    Vector UnSesrchmerge(8, -1);
-    UnSesrchmerge.add_vector(UnSortedVector31, 0, 8);
+    // 生成随机数组
+    for (int i = 0; i < 1000; i++) 
+    {
+        rand_vector[i] = rand() % 100; // 生成0~99之间的随机数
+    }
+
+    Vector UnSesrchbubble(1000, -1);
+    UnSesrchbubble.add_vector(rand_vector, 0, 1000);
+
+    Vector UnSesrchmerge(1000, -1);
+    UnSesrchmerge.add_vector(rand_vector, 0, 1000);
 
     clock_t start_bubble = clock();
-    UnSesrchbubble.bubblesort(0, 7);
+    UnSesrchbubble.bubblesort(0, 1000);
     clock_t stop_bubble = clock();
     cout << "time of bubble:" << double(stop_bubble - start_bubble) / CLOCKS_PER_SEC << endl;
     clock_t start_merge = clock();
-    UnSesrchmerge.mergeSort(0, 7);
+    UnSesrchmerge.mergeSort(0, 1000);
     clock_t stop_merge = clock();
     cout << "time of merge:" << double(stop_merge - start_merge) / CLOCKS_PER_SEC << endl;
 
