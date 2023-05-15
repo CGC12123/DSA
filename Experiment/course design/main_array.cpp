@@ -3,7 +3,7 @@
 
 int main()
 {
-    Vector list(1, -1);
+    LinkedList list(1, -1);
 
     cout << "请输入初始化数据：(以0为结束)" << endl;
     list.init();

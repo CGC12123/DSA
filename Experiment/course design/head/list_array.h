@@ -6,7 +6,7 @@
 #include <cstdlib>
 using namespace std;
 
-class Vector
+class LinkedList
 {
 private:
     int *arr;
@@ -14,15 +14,15 @@ private:
     int capacity; // 容量
 
 public:
-    Vector(int capa, int init_num); // 构造函数 初始化容量及初始数值
+    LinkedList(int capa, int init_num); // 构造函数 初始化容量及初始数值
 
-    ~Vector(); // 析构函数
+    ~LinkedList(); // 析构函数
 
     void init();
 
     void expand(); // 扩容函数 容量扩容两倍
 
-    void add_vector(int *array, int lo, int hi); // 填入数组
+    void add(int *array, int lo, int hi); // 填入数组
 
     void findIndex(int value); // 查询索引对应数值
 

@@ -1,6 +1,6 @@
 #include "list_array.h"
 
-Vector::Vector(int capa, int init_num)
+LinkedList::LinkedList(int capa, int init_num)
 {
     capacity = capa;
     arr = new int[capacity];
@@ -11,12 +11,12 @@ Vector::Vector(int capa, int init_num)
     size = 0;
 }
 
-Vector::~Vector()
+LinkedList::~LinkedList()
 {
     delete[] arr;
 }
 
-void Vector::init()
+void LinkedList::init()
 {
     int num;
     while (true)
@@ -28,7 +28,7 @@ void Vector::init()
     }
 }
 
-void Vector::expand()
+void LinkedList::expand()
 {
     if (size < capacity)
         return;
@@ -49,7 +49,7 @@ void Vector::expand()
     }
 }
 
-void Vector::add_vector(int *array, int lo, int hi)
+void LinkedList::add(int *array, int lo, int hi)
 {
     expand();
 
@@ -59,7 +59,7 @@ void Vector::add_vector(int *array, int lo, int hi)
     }
 }
 
-void Vector::findIndex(int value)
+void LinkedList::findIndex(int value)
 {
     for (int i = 0; i < size; i++)
     {
@@ -73,12 +73,12 @@ void Vector::findIndex(int value)
     return;
 }
 
-void Vector::insert(int value)
+void LinkedList::insert(int value)
 {
     insert(size, value);
 }
 
-void Vector::insert(int index, int value)
+void LinkedList::insert(int index, int value)
 {
     expand();
 
@@ -100,12 +100,12 @@ void Vector::insert(int index, int value)
     arr[index] = value;
 }
 
-int Vector::get_size()
+int LinkedList::get_size()
 {
     return size;
 }
 
-void Vector::remove(int value)
+void LinkedList::remove(int value)
 {
     bool temp = 0;
     for (int i = 0; i < size; i++)
@@ -135,7 +135,7 @@ void Vector::remove(int value)
     }
 }
 
-void Vector::removeDuplicates2()
+void LinkedList::removeDuplicates2()
 {
     sort(arr, arr + size);
     int i = 0;
@@ -156,12 +156,12 @@ void Vector::removeDuplicates2()
     }
 }
 
-int Vector::get(int index)
+int LinkedList::get(int index)
 {
     return arr[index];
 }
 
-void Vector::show()
+void LinkedList::show()
 {
     for (int i = 0; i < size; i++)
     {
@@ -170,7 +170,7 @@ void Vector::show()
     cout << endl;
 }
 
-bool Vector::judege()
+bool LinkedList::judege()
 {
     for (int i = 0; i < size; i++)
         if (arr[i] > arr[i + 1])
@@ -180,7 +180,7 @@ bool Vector::judege()
     return true;
 }
 
-void Vector::bubblesort(int start, int end)
+void LinkedList::bubblesort(int start, int end)
 {
     for (int i = start; i <= end; i++)
     {
@@ -194,7 +194,7 @@ void Vector::bubblesort(int start, int end)
     }
 }
 
-int Vector::binSearchA(int target, int left, int right)
+int LinkedList::binSearchA(int target, int left, int right)
 {
     while (left <= right)
     {
@@ -209,7 +209,7 @@ int Vector::binSearchA(int target, int left, int right)
     return -1;
 }
 
-int Vector::binSearchB(int target, int left, int right)
+int LinkedList::binSearchB(int target, int left, int right)
 {
     while (1 < right - left)
     {
@@ -219,7 +219,7 @@ int Vector::binSearchB(int target, int left, int right)
     return (target == arr[left]) ? left : -1;
 }
 
-int Vector::binSearchC(int target, int left, int right)
+int LinkedList::binSearchC(int target, int left, int right)
 {
     while (right > left)
     {
@@ -229,12 +229,12 @@ int Vector::binSearchC(int target, int left, int right)
     return --left;
 }
 
-void Vector::Sort()
+void LinkedList::Sort()
 {
     sort(arr, arr + size);
 }
 
-void Vector::merge(int left, int mi, int right) // mi为界
+void LinkedList::merge(int left, int mi, int right) // mi为界
 {
     int n1 = mi - left + 1, n2 = right - mi;
     int *tmp = new int[n1 + n2];
@@ -259,7 +259,7 @@ void Vector::merge(int left, int mi, int right) // mi为界
     delete[] tmp;
 }
 
-void Vector::mergeSort(int l, int r)
+void LinkedList::mergeSort(int l, int r)
 {
     if (l < r)
     {
