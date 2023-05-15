@@ -1,19 +1,14 @@
 #include "list_array.h"
 
-LinkedList::LinkedList(int capa, int init_num)
+LinkedList::LinkedList()
 {
-    capacity = capa;
-    arr = new int[capacity];
-    for (int i = 0; i < sizeof(capa); i++)
-    {
-        arr[i] = init_num;
-    }
+    // 初始化链表为空
+    head = -1;
     size = 0;
-}
-
-LinkedList::~LinkedList()
-{
-    delete[] arr;
+    for (int i = 0; i < MAX_SIZE; ++i)
+    {
+        nodes[i].next = -1;
+    }
 }
 
 void LinkedList::init()
@@ -24,248 +19,123 @@ void LinkedList::init()
         cin >> num;
         if (num == 0)
             break;
-        insert(num);
+        add(num);
     }
 }
 
-void LinkedList::expand()
+void LinkedList::add(int val) // 添加新结点
 {
-    if (size < capacity)
+
+    int new_node = size++;
+    nodes[new_node].val = val;
+    nodes[new_node].next = -1;
+
+    if (head == -1) // 如果链表为空，新结点作为头结点
+    {
+        head = new_node;
+    }
+    else // 否则将新结点插入到链表末尾
+    {
+        int cur = head;
+        while (nodes[cur].next != -1)
+        {
+            cur = nodes[cur].next;
+        }
+        nodes[cur].next = new_node;
+    }
+}
+
+void LinkedList::add(int val, int pos)
+{
+    if (pos < 0 || pos > size)
+    {
+        cout << "插入位置不合法" << endl;
         return;
+    }
+
+    // 添加新结点
+    int new_node = size++;
+    nodes[new_node].val = val;
+
+    if (pos == 0)
+    {
+        // 如果要插入的位置是头结点，新结点作为头结点
+        nodes[new_node].next = head;
+        head = new_node;
+    }
     else
     {
-        // 创建新的数据数组
-        int *old = arr;
-        arr = new int[capacity <<= 1]; // 容量翻倍
-
-        // 复制旧的数据到新的数组中
-        for (int i = 0; i < size; i++)
+        // 否则将新结点插入到指定位置
+        int prev = head;
+        for (int i = 0; i < pos - 1; ++i)
         {
-            arr[i] = old[i];
+            prev = nodes[prev].next;
         }
-
-        // 删除旧的数据数组
-        delete[] old;
+        nodes[new_node].next = nodes[prev].next;
+        nodes[prev].next = new_node;
     }
+    cout << "插入成功" << endl;
 }
 
-void LinkedList::add(int *array, int lo, int hi)
+void LinkedList::remove(int val)
 {
-    expand();
-
-    while (lo < hi)
+    if (head == -1) // 如果链表为空，无法删除
     {
-        arr[size++] = array[lo++];
+        cout << "当前列表为空，无法进行删除操作" << endl;
+        return;
     }
-}
 
-void LinkedList::findIndex(int value)
-{
-    for (int i = 0; i < size; i++)
+    if (nodes[head].val == val) // 如果要删除的是头结点
     {
-        if (arr[i] == value)
+        head = nodes[head].next;
+        cout << "删除成功" << endl;
+        return;
+    }
+    else // 否则查找要删除的结点
+    {
+        int prev = head;
+        int cur = nodes[head].next;
+        while (cur != -1 && nodes[cur].val != val)
         {
-            cout << "找到该元素，其地址为" << arr + i << endl;
+            prev = cur;
+            cur = nodes[cur].next;
+        }
+        if (cur != -1)
+        {
+            // 如果找到了要删除的结点，删除它
+            nodes[prev].next = nodes[cur].next;
+            cout << "删除成功" << endl;
             return;
         }
+        cout << "未找到该元素" << endl;
+    }
+}
+
+void LinkedList::find(int val)
+{
+    // 遍历整个链表，查找指定值的元素
+    int cur = head;
+    while (cur != -1)
+    {
+        if (nodes[cur].val == val)
+        {
+            // 如果找到指定值的元素，返回对应结点的地址
+            cout << "找到该元素，其地址为：" << &nodes[cur].val << endl;
+            return;
+        }
+        cur = nodes[cur].next;
     }
     cout << "未找到该元素" << endl;
     return;
 }
 
-void LinkedList::insert(int value)
+void LinkedList::show() // 遍历整个链表，并输出每个结点的值
 {
-    insert(size, value);
-}
-
-void LinkedList::insert(int index, int value)
-{
-    expand();
-
-    size++;
-    if (index >= size)
+    int cur = head;
+    while (cur != -1)
     {
-        index = size - 1;
-        cout << "目标位置大于列表长度，已自动将数据补至列表尾部" << endl;
-    }
-    else
-    {
-        for (int i = size - 1; i > index; i--)
-        {
-            arr[i] = arr[i - 1];
-        }
-        // cout << "添加成功" << endl;
-    }
-
-    arr[index] = value;
-}
-
-int LinkedList::get_size()
-{
-    return size;
-}
-
-void LinkedList::remove(int value)
-{
-    bool temp = 0;
-    for (int i = 0; i < size; i++)
-    {
-        if (arr[i] == value)
-        {
-            while (i < size)
-            {
-                arr[i] = arr[i + 1];
-                i++;
-            }
-            size--;
-            temp = 1;
-        }
-    }
-    if (temp)
-    {
-        cout << "删除成功" << endl;
-    }
-    else if (temp == 0 && size == 0)
-    {
-        cout << "列表为空，无法删除" << endl;
-    }
-    else
-    {
-        cout << "未找到该数据" << endl;
-    }
-}
-
-void LinkedList::removeDuplicates2()
-{
-    sort(arr, arr + size);
-    int i = 0;
-    while (i < size - 1)
-    {
-        if (arr[i] == arr[i + 1])
-        {
-            for (int j = i + 1; j < size - 1; j++)
-            {
-                arr[j] = arr[j + 1];
-            }
-            size--;
-        }
-        else
-        {
-            i++;
-        }
-    }
-}
-
-int LinkedList::get(int index)
-{
-    return arr[index];
-}
-
-void LinkedList::show()
-{
-    for (int i = 0; i < size; i++)
-    {
-        cout << get(i) << " ";
+        cout << nodes[cur].val << " ";
+        cur = nodes[cur].next;
     }
     cout << endl;
-}
-
-bool LinkedList::judege()
-{
-    for (int i = 0; i < size; i++)
-        if (arr[i] > arr[i + 1])
-        {
-            return false;
-        }
-    return true;
-}
-
-void LinkedList::bubblesort(int start, int end)
-{
-    for (int i = start; i <= end; i++)
-    {
-        for (int j = start; j <= end - i + start; j++)
-        {
-            if (arr[j] > arr[j + 1])
-            {
-                swap(arr[j], arr[j + 1]);
-            }
-        }
-    }
-}
-
-int LinkedList::binSearchA(int target, int left, int right)
-{
-    while (left <= right)
-    {
-        int mid = left + (right - left) / 2;
-        if (arr[mid] == target)
-            return mid;
-        else if (arr[mid] < target)
-            left = mid + 1;
-        else
-            right = mid - 1;
-    }
-    return -1;
-}
-
-int LinkedList::binSearchB(int target, int left, int right)
-{
-    while (1 < right - left)
-    {
-        int mi = (right + left) >> 1;
-        (target < arr[mi]) ? right = mi : left = mi;
-    }
-    return (target == arr[left]) ? left : -1;
-}
-
-int LinkedList::binSearchC(int target, int left, int right)
-{
-    while (right > left)
-    {
-        int mi = (right + left) >> 1;
-        (target < arr[mi]) ? right = mi : left = mi + 1;
-    }
-    return --left;
-}
-
-void LinkedList::Sort()
-{
-    sort(arr, arr + size);
-}
-
-void LinkedList::merge(int left, int mi, int right) // mi为界
-{
-    int n1 = mi - left + 1, n2 = right - mi;
-    int *tmp = new int[n1 + n2];
-    int p = 0, p1 = left, p2 = mi + 1;
-
-    while (p1 <= mi && p2 <= right)
-    {
-        if (arr[p1] <= arr[p2])
-            tmp[p++] = arr[p1++];
-        else
-            tmp[p++] = arr[p2++];
-    }
-
-    while (p1 <= mi)
-        tmp[p++] = arr[p1++];
-    while (p2 <= right)
-        tmp[p++] = arr[p2++];
-
-    for (int i = 0; i < p; ++i)
-        arr[left + i] = tmp[i];
-
-    delete[] tmp;
-}
-
-void LinkedList::mergeSort(int l, int r)
-{
-    if (l < r)
-    {
-        int m = l + (r - l) / 2;
-        mergeSort(l, m);
-        mergeSort(m + 1, r);
-        merge(l, m, r);
-    }
 }

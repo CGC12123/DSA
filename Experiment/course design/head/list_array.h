@@ -6,53 +6,32 @@
 #include <cstdlib>
 using namespace std;
 
+const int MAX_SIZE = 100;
+
+struct Node
+{
+    int val;
+    int next;
+};
+
 class LinkedList
 {
 private:
-    int *arr;
-    int size;     // 元素数量
-    int capacity; // 容量
-
+    Node nodes[MAX_SIZE]; // 存储链表结点的数组
+    int head;                 // 链表头结点的下标
+    int size;                 // 链表的大小
 public:
-    LinkedList(int capa, int init_num); // 构造函数 初始化容量及初始数值
-
-    ~LinkedList(); // 析构函数
+    LinkedList();
 
     void init();
 
-    void expand(); // 扩容函数 容量扩容两倍
+    void add(int val);
 
-    void add(int *array, int lo, int hi); // 填入数组
+    void add(int val, int pos);
 
-    void findIndex(int value); // 查询索引对应数值
+    void remove(int val);
 
-    void insert(int value);
-
-    void insert(int index, int value);
-
-    int get_size();
-
-    void remove(int value);
-
-    void removeDuplicates2();
-
-    void bubblesort(int start, int end);
-
-    int binSearchA(int target, int left, int right);
-
-    int binSearchB(int target, int left, int right);
-
-    int binSearchC(int target, int left, int right);
-
-    void Sort();
-
-    void merge(int left, int mi, int right);
-
-    void mergeSort(int left, int right);
-
-    int get(int index);
-
-    bool judege(); // 判断是否有序
+    void find(int value);
 
     void show();
 };

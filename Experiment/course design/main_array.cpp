@@ -3,7 +3,7 @@
 
 int main()
 {
-    LinkedList list(1, -1);
+    LinkedList list;
 
     cout << "请输入初始化数据：(以0为结束)" << endl;
     list.init();
@@ -23,7 +23,7 @@ int main()
             cout << "请输入插入的数据：";
             cin >> num;
 
-            list.insert(pos, num);
+            list.add(num, pos);
 
             break;
         }
@@ -42,7 +42,7 @@ int main()
             int num;
             cout << "请输入要找到数据：";
             cin >> num;
-            list.findIndex(num);
+            list.find(num);
             break;
         }
         case 'o':
