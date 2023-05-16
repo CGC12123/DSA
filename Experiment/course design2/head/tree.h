@@ -40,6 +40,10 @@ private:
     Node *root; // 根节点
 
 public:
+    vector<int> search_pre;
+
+    vector<int> search_post;
+
     BinaryTree(Node root_) { this->root = new Node(root_.getVal(), root_.getLeft(), root_.getRight()); } // 构造函数一
 
     BinaryTree() { this->root = NULL; } // 构造函数二，初始根节点为空
@@ -76,20 +80,21 @@ public:
     void levelOrderTraversal_norecursion(bool print_path);
 
     // 先序遍历查找
-    Node *searchPreorder(int val, vector<Node *> &path);
+    void searchpreOrderTraversal(bool print_path, int target_num);
     // 先序遍历查找辅助函数
-    Node *searchPreorderHelper(Node *node, int val, vector<Node *> &path);
+    void searchpreOrderTraversalHelper(Node *node, bool print_path, vector<int> &path, int target_num);
 
     // 后序遍历查找
-    Node *searchPostorder(int val, vector<Node *> &path);
+    void searchpostOrderTraversal(bool print_path, int target_num);
     // 后序遍历查找辅助函数
-    Node *searchPostorderHelper(Node *node, int val, vector<Node *> &path);
+    void searchpostOrderTraversalHelper(Node *node, bool print_path, vector<int> &path, int target_num);
+    // 显示遍历次序函数
+    void show_search_path(vector<int> search, int target_num);
 
     // 层次遍历查找
     Node *searchLevelOrder(int val, vector<Node *> &path);
     // 层次遍历查找辅助函数
     Node *searchLevelOrderHelper(Node *node, int val, vector<Node *> &path);
-
 };
 
 // 输出查找路径函数

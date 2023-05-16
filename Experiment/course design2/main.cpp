@@ -31,30 +31,33 @@ int main()
 
     // 三种非递归遍历
     cout << "先序遍历-非递归：";
-    tree.preOrderTraversal_norecursion(false); cout << endl; // 先序遍历
+    tree.preOrderTraversal_norecursion(false);
+    cout << endl; // 先序遍历
     cout << "后序遍历-非递归：";
-    tree.postOrderTraversal_norecursion(false); cout << endl; // 后序遍历
+    tree.postOrderTraversal_norecursion(false);
+    cout << endl; // 后序遍历
     cout << "层次遍历-非递归：";
-    tree.levelOrderTraversal_norecursion(false); cout << endl; // 层次遍历
+    tree.levelOrderTraversal_norecursion(false);
+    cout << endl; // 层次遍历
+
+    cout << endl;
 
     // 搜索
-    int val = 4; // 要查找到数
-    vector<Node *> path_pre;
-    cout << "先序查找：";
-    Node *node_pre = tree.searchLevelOrder(val, path_pre);
-    searchPath_show(node_pre, 6, path_pre);
-    path_pre.clear();
+    cout << "先序查找：" << endl;
+    int val1 = 5;
+    tree.searchpreOrderTraversal(true, val1);
+    tree.show_search_path(tree.search_pre, val1);
 
-    vector<Node *> path_order;
-    cout << "后序查找：";
-    Node *node_order = tree.searchPostorder(val, path_order);
-    searchPath_show(node_order, 6, path_order);
-    path_order.clear();
+    int val2 = 8;
+    cout << "后序查找：" << endl;
+    tree.searchpostOrderTraversal(true, val2);
+    tree.show_search_path(tree.search_post, val2);
 
+    int val3 = 9;
     vector<Node *> path_level;
-    cout << "层次查找：";
-    Node *node_level = tree.searchLevelOrder(val, path_level);
-    searchPath_show(node_level, 6, path_level);
+    cout << "层次查找：" << endl;
+    Node *node_level = tree.searchLevelOrder(val3, path_level);
+    searchPath_show(node_level, val3, path_level);
     path_level.clear();
 
     return 0;

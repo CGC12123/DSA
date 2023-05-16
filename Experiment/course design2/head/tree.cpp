@@ -382,20 +382,49 @@ void BinaryTree::levelOrderTraversal_norecursion(bool print_path = true)
     }
 }
 
-// 先序遍历查找
-Node *BinaryTree::searchPreorder(int val, vector<Node *> &path)
+void BinaryTree::searchpreOrderTraversal(bool print_path, int target_num)
 {
-    Node *node_temp = searchLevelOrderHelper(root, val, path);
-    if (node_temp == NULL)
-        cout << "查找失败，未查找到目标" << endl;
-
-    return node_temp;
+    vector<int> path;                                                        // 使用向量储存路径 用于路径输出
+    searchpreOrderTraversalHelper(this->root, print_path, path, target_num); // 进入递归函数进行递归
 }
 
-// 后序遍历查找
-Node *BinaryTree::searchPostorder(int val, vector<Node *> &path)
+void BinaryTree::searchpreOrderTraversalHelper(Node *node, bool print_path, vector<int> &path, int target_num)
 {
-    return searchPostorderHelper(root, val, path);
+    if (node == NULL) // 节点为空直接return
+    {
+        return;
+    }
+
+    search_pre.push_back(node->getVal()); // 公有 用于储存遍历过的数据 不覆盖
+
+    path.push_back(node->getVal()); // 将当前节点值加入路径 便于下一次递归调用路径
+    // 对左右节点分别进行递归查找 先不断对左子节点进行递归 再逐步回调
+    searchpreOrderTraversalHelper(node->getLeft(), print_path, path, target_num);
+    searchpreOrderTraversalHelper(node->getRight(), print_path, path, target_num);
+    path.pop_back();
+}
+
+void BinaryTree::searchpostOrderTraversal(bool print_path, int target_num)
+{
+    vector<int> path;
+    searchpostOrderTraversalHelper(this->root, print_path, path, target_num);
+}
+
+void BinaryTree::searchpostOrderTraversalHelper(Node *node, bool print_path, vector<int> &path, int target_num)
+{
+    if (node == NULL) // 节点为空直接return
+    {
+        return;
+    }
+
+    path.push_back(node->getVal()); // 将当前节点值加入路径 便于下一次递归调用路径
+    // 对左右节点分别进行递归查找 先不断对左子节点进行递归 再逐步回调
+    searchpostOrderTraversalHelper(node->getLeft(), print_path, path, target_num);
+    searchpostOrderTraversalHelper(node->getRight(), print_path, path, target_num);
+
+    search_post.push_back(node->getVal()); // 公有 用于储存遍历过的数据 不覆盖
+
+    path.pop_back();
 }
 
 // 层次遍历查找
@@ -406,69 +435,6 @@ Node *BinaryTree::searchLevelOrder(int val, vector<Node *> &path)
         cout << "查找失败，未查找到目标" << endl;
 
     return node_temp;
-}
-
-// 先序遍历查找辅助方法
-Node *BinaryTree::searchPreorderHelper(Node *node, int val, vector<Node *> &path)
-{
-    if (node == NULL)
-    {
-        return NULL;
-    }
-
-    path.push_back(node);
-
-    if (node->getVal() == val)
-    {
-        return node;
-    }
-
-    Node *left = searchPreorderHelper(node->getLeft(), val, path);
-    if (left != NULL)
-    {
-        return left;
-    }
-
-    Node *right = searchPreorderHelper(node->getRight(), val, path);
-    if (right != NULL)
-    {
-        return right;
-    }
-
-    path.pop_back();
-
-    return NULL;
-}
-
-// 后序遍历查找辅助方法
-Node *BinaryTree::searchPostorderHelper(Node *node, int val, vector<Node *> &path)
-{
-    if (node == NULL)
-    {
-        return NULL;
-    }
-
-    Node *left = searchPostorderHelper(node->getLeft(), val, path);
-    if (left != NULL)
-    {
-        path.push_back(node);
-        return left;
-    }
-
-    Node *right = searchPostorderHelper(node->getRight(), val, path);
-    if (right != NULL)
-    {
-        path.push_back(node);
-        return right;
-    }
-
-    if (node->getVal() == val)
-    {
-        path.push_back(node);
-        return node;
-    }
-
-    return NULL;
 }
 
 // 层次遍历查找辅助方法
@@ -508,20 +474,54 @@ Node *BinaryTree::searchLevelOrderHelper(Node *node, int val, vector<Node *> &pa
     return NULL;
 }
 
+void BinaryTree::show_search_path(vector<int> search, int target_num)
+{
+    vector<int> path; // 保存搜索路径中经过的所有节点
+    bool found = false;
+
+    // 保存所有匹配的位置
+    vector<int> target_indices;
+    for (int i = 0; i < search.size(); i++)
+    {
+        path.push_back(search[i]);
+        if (search[i] == target_num)
+        {
+            found = true;
+            target_indices.push_back(i);
+        }
+    }
+
+    // 输出所有匹配的位置及其对应的搜索路径
+    if (found)
+    {
+        for (int i = 0; i < target_indices.size(); i++)
+        {
+            int index = target_indices[i];
+            cout << "成功查找到：" << target_num << "！"
+                 << "其路径为：";
+            for (int j = 0; j <= index; j++)
+            {
+                cout << path[j] << " ";
+            }
+            cout << endl;
+        }
+    }
+    else
+    {
+        cout << "未找到：" << target_num << endl;
+    }
+}
+
 void searchPath_show(Node *node, int val, vector<Node *> path)
 {
     if (node != nullptr)
     {
         cout << "成功查找到：" << val << "！";
-        cout << "查找路劲为: ";
+        cout << "查找路径为: ";
         for (auto n : path)
         {
             cout << n->getVal() << " ";
         }
         cout << endl;
-    }
-    else
-    {
-        cout << "未找到数值：" << val << endl;
     }
 }
