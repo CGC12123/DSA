@@ -185,18 +185,18 @@ void BinaryTree::levelOrderTraversal(Node *node)
 
         for (int i = 0; i < level_size; i++)
         {
-            Node *node = queue.front();
+            Node *node = queue.front(); // 读取队列头 并将其pop
             queue.pop();
 
-            cout << node->getVal() << " ";
+            cout << node->getVal() << " "; // 输出队列头的值
 
             if (node->getLeft() != NULL)
             {
-                queue.push(node->getLeft());
+                queue.push(node->getLeft()); // 左节点入队
             }
             if (node->getRight() != NULL)
             {
-                queue.push(node->getRight());
+                queue.push(node->getRight()); // 右节点入队
             }
         }
     }
@@ -315,7 +315,7 @@ void BinaryTree::levelOrderTraversal_norecursion(bool print_path = true)
 {
     if (this->root == NULL)
     {
-        cout << "Empty tree" << endl;
+        cout << "当前树为空" << endl;
         return;
     }
 
