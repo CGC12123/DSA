@@ -43,7 +43,7 @@ int main()
     tree.postOrderTraversal_recursion(false); // 后序遍历
     cout << endl;
     cout << "层次遍历-递归：";
-    tree.levelOrderTraversal_recursion(false); // 层次遍历
+    tree.levelOrderTraversal_recursion(); // 层次遍历
     cout << endl << endl;
     // 三种非递归遍历
     cout << "先序遍历-非递归：";

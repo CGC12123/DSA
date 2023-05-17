@@ -96,11 +96,11 @@ void BinaryTree::show()
 
 void BinaryTree::preOrderTraversal_recursion(bool print_path = true)
 {
-    vector<int> path;                                      // 使用向量储存路径 用于路径输出
-    preOrderTraversalHelper(this->root, print_path, path); // 进入递归函数进行递归
+    vector<int> path;                                // 使用向量储存路径 用于路径输出
+    preOrderTraversal(this->root, print_path, path); // 进入递归函数进行递归
 }
 
-void BinaryTree::preOrderTraversalHelper(Node *node, bool print_path, vector<int> &path)
+void BinaryTree::preOrderTraversal(Node *node, bool print_path, vector<int> &path)
 {
     if (node == NULL) // 节点为空直接return
     {
@@ -123,18 +123,18 @@ void BinaryTree::preOrderTraversalHelper(Node *node, bool print_path, vector<int
 
     path.push_back(node->getVal()); // 将当前节点值加入路径 便于下一次递归调用路径
     // 对左右节点分别进行递归查找 先不断对左子节点进行递归 再逐步回调
-    preOrderTraversalHelper(node->getLeft(), print_path, path);
-    preOrderTraversalHelper(node->getRight(), print_path, path);
+    preOrderTraversal(node->getLeft(), print_path, path);
+    preOrderTraversal(node->getRight(), print_path, path);
     path.pop_back();
 }
 
 void BinaryTree::postOrderTraversal_recursion(bool print_path = true)
 {
     vector<int> path;
-    postOrderTraversalHelper(this->root, print_path, path);
+    postOrderTraversal(this->root, print_path, path);
 }
 
-void BinaryTree::postOrderTraversalHelper(Node *node, bool print_path, vector<int> &path)
+void BinaryTree::postOrderTraversal(Node *node, bool print_path, vector<int> &path)
 {
     // 与先序类似 只是输出顺序不同
     if (node == NULL)
@@ -144,8 +144,8 @@ void BinaryTree::postOrderTraversalHelper(Node *node, bool print_path, vector<in
 
     // 后序遍历 先对左子节点进行遍历 再对右节点 最后是根节点
     path.push_back(node->getVal());
-    postOrderTraversalHelper(node->getLeft(), print_path, path);
-    postOrderTraversalHelper(node->getRight(), print_path, path);
+    postOrderTraversal(node->getLeft(), print_path, path);
+    postOrderTraversal(node->getRight(), print_path, path);
 
     if (print_path)
     {
@@ -163,38 +163,32 @@ void BinaryTree::postOrderTraversalHelper(Node *node, bool print_path, vector<in
     path.pop_back();
 }
 
-void BinaryTree::levelOrderTraversal_recursion(bool print_path = true)
+void BinaryTree::levelOrderTraversal_recursion()
 {
-    levelOrderTraversalHelper(this->root, print_path);
+    levelOrderTraversal(this->root);
 }
 
-void BinaryTree::levelOrderTraversalHelper(Node *node, bool print_path)
+void BinaryTree::levelOrderTraversal(Node *node)
 {
     if (node == NULL)
     {
         return;
     }
 
+    // 宽度优先搜索思想 与队列思想类似 创建队列用于储存节点
     queue<Node *> queue;
     queue.push(node);
 
     while (!queue.empty())
     {
-        int level_size = queue.size();
+        int level_size = queue.size(); // 记录当前队列的size 用于遍历
 
         for (int i = 0; i < level_size; i++)
         {
             Node *node = queue.front();
             queue.pop();
 
-            if (print_path)
-            {
-                cout << node->getVal() << endl;
-            }
-            else
-            {
-                cout << node->getVal() << " ";
-            }
+            cout << node->getVal() << " ";
 
             if (node->getLeft() != NULL)
             {
@@ -204,11 +198,6 @@ void BinaryTree::levelOrderTraversalHelper(Node *node, bool print_path)
             {
                 queue.push(node->getRight());
             }
-        }
-
-        if (print_path)
-        {
-            cout << endl;
         }
     }
 }
@@ -221,17 +210,17 @@ void BinaryTree::preOrderTraversal_norecursion(bool print_path = true)
         return;
     }
 
-    // 由于层次遍历为宽度优先搜索 其机制类似于堆栈的先入后出 在此处使用堆栈进行数据存储
+    // 由于先序遍历的节点先进入的其右节点往往最后才被读取 其机制类似于堆栈的先入后出 在此处使用堆栈进行数据存储
     stack<Node *> s; // 创建新的堆栈用于储存节点
     s.push(this->root);
-    vector<int> path;
+    vector<int> path; // 创建向量储存遍历路径
 
     while (!s.empty())
     {
-        Node *node = s.top(); // 查看栈顶
-        s.pop();
+        Node *node = s.top(); // 当前栈顶元素
+        s.pop();              // 读取后将其pop
 
-        if (print_path)
+        if (print_path) // 若需要 输出当前已遍历过的路径
         {
             for (int val : path)
             {
@@ -239,21 +228,21 @@ void BinaryTree::preOrderTraversal_norecursion(bool print_path = true)
             }
             cout << node->getVal() << endl;
         }
-        else
+        else // 否则只需要一次输出当前值即可
         {
             cout << node->getVal() << " ";
         }
 
         if (node->getRight() != NULL)
         {
-            s.push(node->getRight());
+            s.push(node->getRight()); // 将右节点入栈
         }
         if (node->getLeft() != NULL)
         {
-            s.push(node->getLeft());
+            s.push(node->getLeft()); // 将左节点入栈
         }
 
-        if (print_path)
+        if (print_path) // 若有输出需求则将当前值保存 便于下一次调用
         {
             path.push_back(node->getVal());
         }
@@ -265,10 +254,12 @@ void BinaryTree::postOrderTraversal_norecursion(bool print_path = true)
 {
     if (this->root == NULL)
     {
-        cout << "Empty tree" << endl;
+        cout << "当前树为空" << endl;
         return;
     }
 
+    // 由于后序遍历最后输出节点值 其读取完左右儿子不能直接将当前节点pop 在此处申请两个堆栈分别储存左右儿子的节点
+    // 其余步骤与先序遍历大同小异
     stack<Node *> s1, s2;
     s1.push(this->root);
     vector<int> path;
@@ -384,11 +375,11 @@ void BinaryTree::levelOrderTraversal_norecursion(bool print_path = true)
 
 void BinaryTree::searchpreOrderTraversal(bool print_path, int target_num)
 {
-    vector<int> path;                                                        // 使用向量储存路径 用于路径输出
-    searchpreOrderTraversalHelper(this->root, print_path, path, target_num); // 进入递归函数进行递归
+    vector<int> path;                                                   // 使用向量储存路径 用于路径输出
+    searchpreOrderTraversal_(this->root, print_path, path, target_num); // 进入递归函数进行递归
 }
 
-void BinaryTree::searchpreOrderTraversalHelper(Node *node, bool print_path, vector<int> &path, int target_num)
+void BinaryTree::searchpreOrderTraversal_(Node *node, bool print_path, vector<int> &path, int target_num)
 {
     if (node == NULL) // 节点为空直接return
     {
@@ -399,18 +390,18 @@ void BinaryTree::searchpreOrderTraversalHelper(Node *node, bool print_path, vect
 
     path.push_back(node->getVal()); // 将当前节点值加入路径 便于下一次递归调用路径
     // 对左右节点分别进行递归查找 先不断对左子节点进行递归 再逐步回调
-    searchpreOrderTraversalHelper(node->getLeft(), print_path, path, target_num);
-    searchpreOrderTraversalHelper(node->getRight(), print_path, path, target_num);
+    searchpreOrderTraversal_(node->getLeft(), print_path, path, target_num);
+    searchpreOrderTraversal_(node->getRight(), print_path, path, target_num);
     path.pop_back();
 }
 
 void BinaryTree::searchpostOrderTraversal(bool print_path, int target_num)
 {
     vector<int> path;
-    searchpostOrderTraversalHelper(this->root, print_path, path, target_num);
+    searchpostOrderTraversal_(this->root, print_path, path, target_num);
 }
 
-void BinaryTree::searchpostOrderTraversalHelper(Node *node, bool print_path, vector<int> &path, int target_num)
+void BinaryTree::searchpostOrderTraversal_(Node *node, bool print_path, vector<int> &path, int target_num)
 {
     if (node == NULL) // 节点为空直接return
     {
@@ -419,8 +410,8 @@ void BinaryTree::searchpostOrderTraversalHelper(Node *node, bool print_path, vec
 
     path.push_back(node->getVal()); // 将当前节点值加入路径 便于下一次递归调用路径
     // 对左右节点分别进行递归查找 先不断对左子节点进行递归 再逐步回调
-    searchpostOrderTraversalHelper(node->getLeft(), print_path, path, target_num);
-    searchpostOrderTraversalHelper(node->getRight(), print_path, path, target_num);
+    searchpostOrderTraversal_(node->getLeft(), print_path, path, target_num);
+    searchpostOrderTraversal_(node->getRight(), print_path, path, target_num);
 
     search_post.push_back(node->getVal()); // 公有 用于储存遍历过的数据 不覆盖
 
@@ -430,7 +421,7 @@ void BinaryTree::searchpostOrderTraversalHelper(Node *node, bool print_path, vec
 // 层次遍历查找
 Node *BinaryTree::searchLevelOrder(int val, vector<Node *> &path)
 {
-    Node *node_temp = searchLevelOrderHelper(root, val, path);
+    Node *node_temp = searchLevelOrder_(root, val, path);
     if (node_temp == NULL)
         cout << "查找失败，未查找到目标" << endl;
 
@@ -438,17 +429,17 @@ Node *BinaryTree::searchLevelOrder(int val, vector<Node *> &path)
 }
 
 // 层次遍历查找辅助方法
-Node *BinaryTree::searchLevelOrderHelper(Node *node, int val, vector<Node *> &path)
+Node *BinaryTree::searchLevelOrder_(Node *node, int val, vector<Node *> &path)
 {
     if (node == NULL)
     {
         return NULL;
     }
 
-    queue<Node *> q;
-    q.push(node);
+    queue<Node *> q; // 构造队列
+    q.push(node);    // push节点
 
-    while (!q.empty())
+    while (!q.empty()) // 只要队列中有节点就将其取出并将其从队列中pop
     {
         Node *n = q.front();
         q.pop();
