@@ -1,3 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(course_design3 VERSION 0.1.0)
 add_executable(main main.cpp head/graph.cpp)
+# SET(CMAKE_BUILD_TYPE "Debug")
+# SET(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g2 -ggdb")
+# SET(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
