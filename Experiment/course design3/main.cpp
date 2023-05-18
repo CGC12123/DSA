@@ -146,7 +146,10 @@ int main()
                  << "之间的路径" << endl;
             g.show_paths(variables[compare_a], variables[compare_b]);
         }
-        case 5:
+        }
+        if (mode2 == 5)
+        {
+            cout << "系统退出" << endl;
             break;
         }
     }
