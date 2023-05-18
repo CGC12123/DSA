@@ -74,7 +74,7 @@ void Graph::show_side()
         {
             if (graph[i][j] == 1)
             {
-                cout << "(" << char(65 + i) << "," << char(65 + j) << ") ";
+                cout << "(" << char(65 + i) << "," << char(65 + j) << ") "; // 换算成A~G
             }
         }
     }
@@ -83,22 +83,24 @@ void Graph::show_side()
 
 void Graph::dfs(int start, int target, bool show_path)
 {
-    vector<bool> visited(graph.size(), false);
-    vector<int> path(graph.size(), -1);
-    stack<int> s;
-    s.push(start);
-    visited[start] = true;
-    int found_target = -1;
-    while (!s.empty() && found_target == -1)
+    // show_path为true时才输出路径
+    vector<bool> visited(graph.size(), false); // 储存已访问过的节点
+    vector<int> path(graph.size(), -1);        // 储存访问路径
+    stack<int> s;                              // 深度优先使用堆栈进行储存节点
+    s.push(start);                             // 将初始访问的点放入堆栈
+    visited[start] = true;                     // 设置为已访问过
+    int found_target = -1;                     // 标志位记录是否找到目标
+    while (!s.empty() && found_target == -1)   // 在找到目标或遍历完所有点之前进行不断操作
     {
-        int cur = s.top();
+        int cur = s.top(); // 将栈顶数据读取并pop掉
         s.pop();
         if (cur == target)
         {
-            cout << endl << "成功找到目标：" << target << endl;
-            found_target = target;
+            cout << endl
+                 << "成功找到目标：" << target << endl;
+            found_target = target; // 将标志位更改
         }
-        for (int i = 0; i < graph[cur].size(); ++i)
+        for (int i = 0; i < graph[cur].size(); ++i) // 对于邻接矩阵的当前行进行遍历并将所有未访问点进行push
         {
             if (graph[cur][i] != 0 && !visited[i])
             {
@@ -108,6 +110,7 @@ void Graph::dfs(int start, int target, bool show_path)
             }
         }
     }
+    // 以下为输出访问路径
     if (found_target != -1 && show_path)
     {
         cout << "目标节点 " << target << " 的搜索路径为：";
@@ -119,7 +122,7 @@ void Graph::dfs(int start, int target, bool show_path)
         {
             cout << target;
             int parent = path[target];
-            while (parent != start)
+            while (parent != start) // 使用储存访问路径的向量进行输出
             {
                 cout << " <- " << parent;
                 parent = path[parent];
@@ -131,10 +134,11 @@ void Graph::dfs(int start, int target, bool show_path)
 
 void Graph::bfs(int start, int target, bool show_path)
 {
+    // 广度优先和深度优先类似 广度优先在open表为先入先出 使用队列进行操作 其他与深度优先类似
     // cout << "初始搜索节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     vector<int> path(graph.size(), -1);
-    queue<int> q;
+    queue<int> q; // 使用队列进行储存
     q.push(start);
     visited[start] = true;
     int found_target = -1;
@@ -182,7 +186,8 @@ void Graph::bfs(int start, int target, bool show_path)
 
 void Graph::dfs_traverse(int start)
 {
-    // cout << "遍历初始节点：" << start << ":" << endl;
+    // 与搜索部分大体逻辑一致
+    //  cout << "遍历初始节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     stack<int> s;
     s.push(start);
@@ -206,6 +211,7 @@ void Graph::dfs_traverse(int start)
 
 void Graph::bfs_traverse(int start)
 {
+    // 与搜索部分大体逻辑一致
     // cout << "广度优先遍历初始节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     queue<int> q;
@@ -230,10 +236,11 @@ void Graph::bfs_traverse(int start)
 
 void Graph::show_paths(int start, int end)
 {
-    vector<vector<int>> all_paths; // 存储所有路径
+    // 搜索两个节点之间的路径
+    vector<vector<int>> all_paths; // 二位向量 存储所有路径
     vector<int> path;              // 当前路径
     path.push_back(start);
-    dfs_paths(start, end, path, all_paths);
+    paths(start, end, path, all_paths); // 进入辅助函数
 
     // 显示路径及路径边数
     for (auto p : all_paths)
@@ -250,7 +257,7 @@ void Graph::show_paths(int start, int end)
 
     // 找到最长和最短路径
     int max_path = 0, min_path = 0;
-    for (int i = 0; i < all_paths.size(); i++)
+    for (int i = 0; i < all_paths.size(); i++) // 对二维向量的每一层进行遍历计算
     {
         if (all_paths[i].size() > max_path)
         {
@@ -271,7 +278,7 @@ void Graph::show_paths(int start, int end)
     cout << "，搜索次数：" << all_paths[min_path].size() << endl;
 }
 
-void Graph::dfs_paths(int cur, int end, vector<int> &path, vector<vector<int>> &all_paths)
+void Graph::paths(int cur, int end, vector<int> &path, vector<vector<int>> &all_paths)
 {
     if (cur == end)
     { // 到达终点
@@ -285,8 +292,8 @@ void Graph::dfs_paths(int cur, int end, vector<int> &path, vector<vector<int>> &
             if (find(path.begin(), path.end(), i) == path.end()) // 避免形成环路
             {
                 path.push_back(i);
-                dfs_paths(i, end, path, all_paths); // 深度优先遍历
-                path.pop_back();                    // 回溯
+                paths(i, end, path, all_paths); // 深度优先遍历
+                path.pop_back();                // 回溯
             }
         }
     }
