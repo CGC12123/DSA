@@ -83,22 +83,20 @@ void Graph::show_side()
 
 void Graph::dfs(int start, int target, bool show_path)
 {
-    cout << "初始搜索节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     vector<int> path(graph.size(), -1);
     stack<int> s;
     s.push(start);
     visited[start] = true;
-    while (!s.empty())
+    int found_target = -1;
+    while (!s.empty() && found_target == -1)
     {
         int cur = s.top();
         s.pop();
-        cout << cur << " ";
         if (cur == target)
         {
-            cout << endl
-                 << "成功找到目标：" << target << endl;
-            return;
+            cout << endl << "成功找到目标：" << target << endl;
+            found_target = target;
         }
         for (int i = 0; i < graph[cur].size(); ++i)
         {
@@ -110,45 +108,45 @@ void Graph::dfs(int start, int target, bool show_path)
             }
         }
     }
-    cout << endl;
-    if (show_path)
+    if (found_target != -1 && show_path)
     {
-        cout << "搜索路径为：";
-        for (int i = 0; i < path.size(); ++i)
+        cout << "目标节点 " << target << " 的搜索路径为：";
+        if (path[target] == -1)
         {
-            if (path[i] != -1)
+            cout << "未找到路径" << endl;
+        }
+        else
+        {
+            cout << target;
+            int parent = path[target];
+            while (parent != start)
             {
-                cout << i << " <- ";
-                int parent = path[i];
-                while (parent != start)
-                {
-                    cout << parent << " <- ";
-                    parent = path[parent];
-                }
-                cout << start << endl;
+                cout << " <- " << parent;
+                parent = path[parent];
             }
+            cout << " <- " << start << endl;
         }
     }
 }
 
 void Graph::bfs(int start, int target, bool show_path)
 {
-    cout << "初始搜索节点：" << start << ":" << endl;
+    // cout << "初始搜索节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     vector<int> path(graph.size(), -1);
     queue<int> q;
     q.push(start);
     visited[start] = true;
-    while (!q.empty())
+    int found_target = -1;
+    while (!q.empty() && found_target == -1)
     {
         int cur = q.front();
         q.pop();
-        cout << cur << " ";
+        // cout << cur << " ";
         if (cur == target)
         {
-            cout << endl
-                 << "成功找到目标：" << target << endl;
-            return;
+            cout << "成功找到目标：" << target;
+            found_target = target;
         }
         for (int i = 0; i < graph[cur].size(); ++i)
         {
@@ -160,30 +158,31 @@ void Graph::bfs(int start, int target, bool show_path)
             }
         }
     }
-    cout << endl;
-    if (show_path)
+    if (found_target != -1 && show_path)
     {
-        cout << "搜索路径为：" << endl;
-        for (int i = 0; i < path.size(); ++i)
+        // cout << "搜索路径为：" << endl;
+        cout << "目标节点 " << target << " 的搜索路径为：";
+        if (path[target] == -1)
         {
-            if (path[i] != -1)
+            cout << "未找到路径" << endl;
+        }
+        else
+        {
+            cout << target << " <- ";
+            int parent = path[target];
+            while (parent != start)
             {
-                cout << i << " <- ";
-                int parent = path[i];
-                while (parent != start)
-                {
-                    cout << parent << " <- ";
-                    parent = path[parent];
-                }
-                cout << start << endl;
+                cout << parent << " <- ";
+                parent = path[parent];
             }
+            cout << start << endl;
         }
     }
 }
 
 void Graph::dfs_traverse(int start)
 {
-    cout << "遍历初始节点：" << start << ":" << endl;
+    // cout << "遍历初始节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     stack<int> s;
     s.push(start);
@@ -207,7 +206,7 @@ void Graph::dfs_traverse(int start)
 
 void Graph::bfs_traverse(int start)
 {
-    cout << "广度优先遍历初始节点：" << start << ":" << endl;
+    // cout << "广度优先遍历初始节点：" << start << ":" << endl;
     vector<bool> visited(graph.size(), false);
     queue<int> q;
     q.push(start);

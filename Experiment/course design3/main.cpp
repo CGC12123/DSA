@@ -47,30 +47,109 @@ int main()
     }
     g.set_num(A, B, C, D, E, F, G); // 完成图的构造
 
-    cout << "当前图为：" << endl;
-    g.show_graph(); // 可视化当前图
-    cout << endl;
-
-    if (!mode)
+    while (true)
     {
-        cout << "以下为示例搜索及查找示例：" << endl;
+        cout << "请输入功能：输出当前图(1) 查找(2) 遍历(3) 获取两点间路径(4) 退出(5)" << endl;
+        int mode2;
+        cin >> mode2;
+
+        switch (mode2)
+        {
+        case 1:
+        {
+            cout << "当前图为：" << endl;
+            g.show_graph(); // 可视化当前图
+            cout << endl;
+            break;
+        }
+        case 2:
+        {
+            cout << "----------------------------------------------------------------" << endl;
+            map<string, int> variables;
+            variables["A"] = A, variables["B"] = B, variables["C"] = C, variables["D"] = D;
+            variables["E"] = E, variables["F"] = F, variables["G"] = G;
+            string target, start;
+            cout << "请选择要进行查找的节点(A~G)：";
+            cin >> target;
+            if (variables.find(target) != variables.end())
+            {
+            }
+            else
+            {
+                cout << "输入的节点不存在" << endl;
+                break;
+            }
+            cout << "请选择要从何节点(A~G)开始查找：";
+            cin >> start;
+            if (variables.find(start) != variables.end())
+            {
+            }
+            else
+            {
+                cout << "输入的节点不存在" << endl;
+            }
+            cout << endl;
+            cout << "从" << start << "(" << variables[start] << ")"
+                 << "开始搜索" << target << "(" << variables[target] << ")" << endl << endl;
+            cout << "广度优先查找：" << endl;
+            g.bfs(variables[start], variables[target], true);
+            cout << endl;
+            cout << "深度优先查找：";
+            g.dfs(variables[start], variables[target], true);
+            cout << endl;
+            break;
+        }
+        case 3:
+        {
+            cout << "----------------------------------------------------------------" << endl;
+            map<string, int> variables;
+            variables["A"] = A, variables["B"] = B, variables["C"] = C, variables["D"] = D;
+            variables["E"] = E, variables["F"] = F, variables["G"] = G;
+            string node;
+            cout << "请选择要进行查找的节点(A~G)：";
+            cin >> node;
+            if (variables.find(node) != variables.end())
+            {
+            }
+            else
+            {
+                cout << "输入的节点不存在" << endl;
+                break;
+            }
+            cout << "请输入开始的遍历节点(A~H)" << endl;
+            cout << "从" << node << "(" << variables[node] << ")"
+                 << "开始遍历" << endl;
+            cout << "广度优先遍历：" << endl;
+            g.bfs_traverse(variables[node]);
+            cout << "深度优先遍历：" << endl;
+            g.dfs_traverse(variables[node]);
+            break;
+        }
+        case 4:
+        {
+            cout << "----------------------------------------------------------------" << endl;
+            map<string, int> variables;
+            variables["A"] = A, variables["B"] = B, variables["C"] = C, variables["D"] = D;
+            variables["E"] = E, variables["F"] = F, variables["G"] = G;
+            cout << "请依次输入要进行比较的两个节点：";
+            string compare_a, compare_b;
+            cin >> compare_a >> compare_b;
+            if (variables.find(compare_a) != variables.end())
+            {
+            }
+            else
+            {
+                cout << "输入的节点不存在" << endl;
+            }
+            cout << "获取" << compare_a << "(" << variables[compare_a] << ")"
+                 << "与" << compare_b << "(" << variables[compare_b] << ")"
+                 << "之间的路径" << endl;
+            g.show_paths(variables[compare_a], variables[compare_b]);
+        }
+        case 5:
+            break;
+        }
     }
-
-    cout << endl;
-    cout << "广度优先：" << endl;
-    g.bfs(4, 1, true);
-    g.bfs_traverse(4);
-
-    cout << "深度优先：" << endl;
-    g.dfs(0, 1, true);
-    g.dfs_traverse(0);
-
-    cout << endl;
-
-    int point1, point2;
-    point1 = 1, point2 = 4;
-    cout << "获取" << point1 << "与" << point2 << "之间的路径" << endl;
-    g.show_paths(point1, point2);
 
     return 0;
 }
