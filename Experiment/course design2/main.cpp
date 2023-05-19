@@ -20,6 +20,7 @@ int main()
     // 根节点初始化
     Node node_(A);
     BinaryTree tree(node_); // A
+    tree.set_num(A, B, C, D, E, F, G, H);
 
     // 初始化目标树
     tree.insert(tree.get_Root(), B, 0);                         // B

@@ -38,6 +38,8 @@ class BinaryTree
 {
 private:
     Node *root; // 根节点
+    int A, B, C, D, E, F, G, H;
+
 
 public:
     vector<int> search_pre; // 储存先序遍历的遍历值
@@ -47,6 +49,8 @@ public:
     BinaryTree(Node root_) { this->root = new Node(root_.getVal(), root_.getLeft(), root_.getRight()); } // 构造函数一
 
     BinaryTree() { this->root = NULL; } // 构造函数二，初始根节点为空
+
+    void set_num(int a, int b, int c, int d, int e, int f, int g, int h);
 
     Node *get_Root() { return this->root; } // 用于访问根节点的接口
 
@@ -59,11 +63,11 @@ public:
     void show(); // 输出树
 
     // 先序遍历 递归 print_path为true时输出遍历路径
-    void preOrderTraversal_recursion(bool print_path); // 入口
+    void preOrderTraversal_recursion(bool print_path);                      // 入口
     void preOrderTraversal(Node *node, bool print_path, vector<int> &path); // 先序遍历主体函数
 
     // 后序遍历 递归
-    void postOrderTraversal_recursion(bool print_path); // 入口
+    void postOrderTraversal_recursion(bool print_path);                      // 入口
     void postOrderTraversal(Node *node, bool print_path, vector<int> &path); // 后序遍历主题函数
 
     // 层次遍历 递归
@@ -88,7 +92,7 @@ public:
     void searchpostOrderTraversal(bool print_path, int target_num);
     // 后序遍历查找辅助函数
     void searchpostOrderTraversal_(Node *node, bool print_path, vector<int> &path, int target_num);
-    
+
     // 显示遍历次序函数 在两个向量中找到目标数值
     void show_search_path(vector<int> search, int target_num);
 
@@ -96,6 +100,8 @@ public:
     Node *searchLevelOrder(int val, vector<Node *> &path);
     // 层次遍历查找辅助函数
     Node *searchLevelOrder_(Node *node, int val, vector<Node *> &path);
+
+    string get_node(int num);
 };
 
 // 输出查找路径函数

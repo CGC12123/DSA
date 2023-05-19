@@ -14,6 +14,11 @@ Node::Node(int val, Node *left, Node *right) // 构造函数二 在传入值的�
     this->right = right;
 }
 
+void BinaryTree::set_num(int a, int b, int c, int d, int e, int f, int g, int h)
+{
+    A = A, B = B, C = C, D = D, E = E, F = F, G = G, H = H;
+}
+
 void BinaryTree::insert(Node *target_node, int node_val, bool left_or_right)
 {
     // 在节点 target_node 的左或者右节点插入值为 node_val 的新节点
@@ -515,4 +520,26 @@ void searchPath_show(Node *node, int val, vector<Node *> path)
         }
         cout << endl;
     }
+}
+
+string BinaryTree::get_node(int num)
+{
+    if (num == A)
+        return "A";
+    else if (num == B)
+        return "B";
+    else if (num == C)
+        return "C";
+    else if (num == D)
+        return "D";
+    else if (num == E)
+        return "E";
+    else if (num == F)
+        return "F";
+    else if (num == G)
+        return "G";
+    else if (num == H)
+        return "H";
+    else
+        return "null";
 }
