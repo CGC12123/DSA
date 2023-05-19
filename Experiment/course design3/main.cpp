@@ -18,13 +18,13 @@ int main()
     g.show_graph_struct();
 
     cout << endl;
-    cout << "当前图临界矩阵为：" << endl;
+    cout << "当前图临接矩阵为：" << endl;
     g.show_matrix(); // 打印邻接矩阵
     cout << endl;
 
     cout << "当前图的所有边为：";
     g.show_side();
-    cout << "(由于为无向图，故在此处重复的边不重复展示)" << endl
+    cout << "(此为无向图，在此处重复的边不重复展示)" << endl
          << endl;
 
     cout << "----------------------------------------------------------------" << endl
@@ -87,6 +87,7 @@ int main()
             else
             {
                 cout << "输入的节点不存在" << endl;
+                break;
             }
             cout << endl;
             cout << "从" << start << "(" << variables[start] << ")"
@@ -106,7 +107,7 @@ int main()
             variables["A"] = A, variables["B"] = B, variables["C"] = C, variables["D"] = D;
             variables["E"] = E, variables["F"] = F, variables["G"] = G;
             string node;
-            cout << "请选择要进行查找的节点(A~G)：";
+            cout << "请选择要开始进行遍历的节点(A~G)：";
             cin >> node;
             if (variables.find(node) != variables.end())
             {
@@ -131,7 +132,7 @@ int main()
             map<string, int> variables;
             variables["A"] = A, variables["B"] = B, variables["C"] = C, variables["D"] = D;
             variables["E"] = E, variables["F"] = F, variables["G"] = G;
-            cout << "请依次输入要进行比较的两个节点：";
+            cout << "请依次输入要进行查找的两个节点：";
             string compare_a, compare_b;
             cin >> compare_a >> compare_b;
             if (variables.find(compare_a) != variables.end())

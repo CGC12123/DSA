@@ -41,6 +41,8 @@ public:
     void show_paths(int start, int end); // 将显示两点间路径
 
     void paths(int cur, int end, vector<int> &path, vector<vector<int>> &all_paths); // 显示两点间路径
+
+    string get_node(int num);
 };
 
 #endif

@@ -97,7 +97,7 @@ void Graph::dfs(int start, int target, bool show_path)
         if (cur == target)
         {
             cout << endl
-                 << "成功找到目标：" << target << endl;
+                 << "成功找到目标：" << get_node(target) << endl;
             found_target = target; // 将标志位更改
         }
         for (int i = 0; i < graph[cur].size(); ++i) // 对于邻接矩阵的当前行进行遍历并将所有未访问点进行push
@@ -113,21 +113,21 @@ void Graph::dfs(int start, int target, bool show_path)
     // 以下为输出访问路径
     if (found_target != -1 && show_path)
     {
-        cout << "目标节点 " << target << " 的搜索路径为：";
+        cout << "目标节点 " << get_node(target) << " 的搜索路径为：";
         if (path[target] == -1)
         {
             cout << "未找到路径" << endl;
         }
         else
         {
-            cout << target;
+            cout << get_node(target);
             int parent = path[target];
             while (parent != start) // 使用储存访问路径的向量进行输出
             {
-                cout << " <- " << parent;
+                cout << " <- " << get_node(parent);
                 parent = path[parent];
             }
-            cout << " <- " << start << endl;
+            cout << " <- " << get_node(start) << endl;
         }
     }
 }
@@ -149,7 +149,7 @@ void Graph::bfs(int start, int target, bool show_path)
         // cout << cur << " ";
         if (cur == target)
         {
-            cout << "成功找到目标：" << target;
+            cout << "成功找到目标：" << get_node(target);
             found_target = target;
         }
         for (int i = 0; i < graph[cur].size(); ++i)
@@ -165,21 +165,21 @@ void Graph::bfs(int start, int target, bool show_path)
     if (found_target != -1 && show_path)
     {
         // cout << "搜索路径为：" << endl;
-        cout << "目标节点 " << target << " 的搜索路径为：";
+        cout << "目标节点 " << get_node(target) << " 的搜索路径为：";
         if (path[target] == -1)
         {
             cout << "未找到路径" << endl;
         }
         else
         {
-            cout << target << " <- ";
+            cout << get_node(target) << " <- ";
             int parent = path[target];
             while (parent != start)
             {
-                cout << parent << " <- ";
+                cout << get_node(parent) << " <- ";
                 parent = path[parent];
             }
-            cout << start << endl;
+            cout << get_node(start) << endl;
         }
     }
 }
@@ -196,7 +196,7 @@ void Graph::dfs_traverse(int start)
     {
         int cur = s.top();
         s.pop();
-        cout << cur << " ";
+        cout << get_node(cur) << " ";
         for (int j = 0; j < graph[cur].size(); ++j)
         {
             if (graph[cur][j] != 0 && !visited[j])
@@ -221,7 +221,7 @@ void Graph::bfs_traverse(int start)
     {
         int cur = q.front();
         q.pop();
-        cout << cur << " ";
+        cout << get_node(cur) << " ";
         for (int j = 0; j < graph[cur].size(); ++j)
         {
             if (graph[cur][j] != 0 && !visited[j])
@@ -242,40 +242,62 @@ void Graph::show_paths(int start, int end)
     path.push_back(start);
     paths(start, end, path, all_paths); // 进入辅助函数
 
-    // 显示路径及路径边数
+    // 找到最长和最短路径
+    int max_path_length = 0, min_path_length = 0;
+    for (auto p : all_paths)
+    {
+        int path_length = p.size();
+        if (path_length > max_path_length)
+        {
+            max_path_length = path_length;
+        }
+
+        if (path_length < min_path_length || min_path_length == 0)
+        {
+            min_path_length = path_length;
+        }
+    }
+
+    // 输出所有路径及路径边数
     for (auto p : all_paths)
     {
         int edges = 0;
         cout << "搜索路径：";
         for (auto v : p)
         {
-            cout << v << " ";
+            cout << get_node(v) << " ";
             edges++;
         }
         cout << "， 所用搜索次数: " << edges << endl;
     }
 
-    // 找到最长和最短路径
-    int max_path = 0, min_path = 0;
-    for (int i = 0; i < all_paths.size(); i++) // 对二维向量的每一层进行遍历计算
+    // 输出最长路径
+    cout << "最长搜索路径：";
+    for (auto p : all_paths)
     {
-        if (all_paths[i].size() > max_path)
+        if (p.size() == max_path_length)
         {
-            max_path = i;
-        }
-        if (all_paths[i].size() < min_path || min_path == 0)
-        {
-            min_path = i;
+            for (auto v : p)
+            {
+                cout << get_node(v) << " ";
+            }
+            cout << "，搜索次数：" << p.size() << endl;
         }
     }
-    cout << "最长搜索路径：";
-    for (auto v : all_paths[max_path])
-        cout << v << " ";
-    cout << "，搜索次数：" << all_paths[max_path].size() << endl;
+
+    // 输出最短路径
     cout << "最短搜索路径：";
-    for (auto v : all_paths[min_path])
-        cout << v << " ";
-    cout << "，搜索次数：" << all_paths[min_path].size() << endl;
+    for (auto p : all_paths)
+    {
+        if (p.size() == min_path_length)
+        {
+            for (auto v : p)
+            {
+                cout << get_node(v) << " ";
+            }
+            cout << "，搜索次数：" << p.size() << endl;
+        }
+    }
 }
 
 void Graph::paths(int cur, int end, vector<int> &path, vector<vector<int>> &all_paths)
@@ -297,4 +319,24 @@ void Graph::paths(int cur, int end, vector<int> &path, vector<vector<int>> &all_
             }
         }
     }
+}
+
+string Graph::get_node(int num)
+{
+    if (num == A)
+        return "A";
+    else if (num == B)
+        return "B";
+    else if (num == C)
+        return "C";
+    else if (num == D)
+        return "D";
+    else if (num == E)
+        return "E";
+    else if (num == F)
+        return "F";
+    else if (num == G)
+        return "G";
+    else
+        return "null";
 }
