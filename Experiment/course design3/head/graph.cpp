@@ -149,7 +149,7 @@ void Graph::bfs(int start, int target, bool show_path)
         // cout << cur << " ";
         if (cur == target)
         {
-            cout << "成功找到目标：" << get_node(target);
+            cout << "成功找到目标：" << get_node(target) << endl;
             found_target = target;
         }
         for (int i = 0; i < graph[cur].size(); ++i)

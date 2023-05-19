@@ -22,7 +22,7 @@ int main()
     g.show_matrix(); // 打印邻接矩阵
     cout << endl;
 
-    cout << "当前图的所有边为：";
+    cout << "当前图的所有边为：" << endl;
     g.show_side();
     cout << "(此为无向图，在此处重复的边不重复展示)" << endl
          << endl;
