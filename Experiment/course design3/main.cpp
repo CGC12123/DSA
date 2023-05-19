@@ -18,7 +18,7 @@ int main()
     g.show_graph_struct();
 
     cout << endl;
-    cout << "当前图临接矩阵为：" << endl;
+    cout << "当前图邻接矩阵为：" << endl;
     g.show_matrix(); // 打印邻接矩阵
     cout << endl;
 
