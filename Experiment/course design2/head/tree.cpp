@@ -16,7 +16,7 @@ Node::Node(int val, Node *left, Node *right) // 构造函数二 在传入值的�
 
 void BinaryTree::set_num(int a, int b, int c, int d, int e, int f, int g, int h)
 {
-    A = A, B = B, C = C, D = D, E = E, F = F, G = G, H = H;
+    A = a, B = b, C = c, D = d, E = e, F = f, G = g, H = h;
 }
 
 void BinaryTree::insert(Node *target_node, int node_val, bool left_or_right)
@@ -82,7 +82,7 @@ void BinaryTree::show()
             cout << setw(padding) << ""; // 使用setw函数会默认在未满足宽度的剩余量上不补上空格 用此进行空格输出
             if (node != NULL)            // 节点不为空则正常输出节点值
             {
-                cout << setw(2) << node->getVal();
+                cout << setw(2) << get_node(node->getVal());
                 queue.push(node->getLeft()); // 将输出后的左右节点入队
                 queue.push(node->getRight());
             }
@@ -119,11 +119,11 @@ void BinaryTree::preOrderTraversal(Node *node, bool print_path, vector<int> &pat
         {
             cout << val << " -> ";
         }
-        cout << node->getVal() << endl;
+        cout << get_node(node->getVal()) << endl;
     }
     else
     {
-        cout << node->getVal() << " ";
+        cout << get_node(node->getVal()) << " ";
     }
 
     path.push_back(node->getVal()); // 将当前节点值加入路径 便于下一次递归调用路径
@@ -156,13 +156,13 @@ void BinaryTree::postOrderTraversal(Node *node, bool print_path, vector<int> &pa
     {
         for (int val : path)
         {
-            cout << val << " -> ";
+            cout << get_node(val) << " -> ";
         }
-        cout << node->getVal() << endl;
+        cout << get_node(node->getVal()) << endl;
     }
     else
     {
-        cout << node->getVal() << " ";
+        cout << get_node(node->getVal()) << " ";
     }
 
     path.pop_back();
@@ -193,7 +193,7 @@ void BinaryTree::levelOrderTraversal(Node *node)
             Node *node = queue.front(); // 读取队列头 并将其pop
             queue.pop();
 
-            cout << node->getVal() << " "; // 输出队列头的值
+            cout << get_node(node->getVal()) << " "; // 输出队列头的值
 
             if (node->getLeft() != NULL)
             {
@@ -229,13 +229,13 @@ void BinaryTree::preOrderTraversal_norecursion(bool print_path = true)
         {
             for (int val : path)
             {
-                cout << val << " -> ";
+                cout << get_node(val) << " -> ";
             }
-            cout << node->getVal() << endl;
+            cout << get_node(node->getVal()) << endl;
         }
         else // 否则只需要一次输出当前值即可
         {
-            cout << node->getVal() << " ";
+            cout << get_node(node->getVal()) << " ";
         }
 
         if (node->getRight() != NULL)
@@ -299,13 +299,13 @@ void BinaryTree::postOrderTraversal_norecursion(bool print_path = true)
         {
             for (int val : path)
             {
-                cout << val << " -> ";
+                cout << get_node(val) << " -> ";
             }
-            cout << node->getVal() << endl;
+            cout << get_node(node->getVal()) << endl;
         }
         else
         {
-            cout << node->getVal() << " ";
+            cout << get_node(node->getVal()) << " ";
         }
 
         if (!path.empty())
@@ -341,13 +341,13 @@ void BinaryTree::levelOrderTraversal_norecursion(bool print_path = true)
             {
                 for (int val : path)
                 {
-                    cout << val << " -> ";
+                    cout << get_node(val) << " -> ";
                 }
-                cout << node->getVal() << endl;
+                cout << get_node(node->getVal()) << endl;
             }
             else
             {
-                cout << node->getVal() << " ";
+                cout << get_node(node->getVal()) << " ";
             }
 
             if (node->getLeft() != NULL)
@@ -497,7 +497,7 @@ void BinaryTree::show_search_path(vector<int> search, int target_num)
                  << "其路径为：";
             for (int j = 0; j <= index; j++)
             {
-                cout << path[j] << " ";
+                cout << get_node(path[j]) << " ";
             }
             cout << endl;
         }
@@ -508,7 +508,7 @@ void BinaryTree::show_search_path(vector<int> search, int target_num)
     }
 }
 
-void searchPath_show(Node *node, int val, vector<Node *> path)
+void BinaryTree::searchPath_show(Node *node, int val, vector<Node *> path)
 {
     if (node != nullptr)
     {
@@ -516,7 +516,7 @@ void searchPath_show(Node *node, int val, vector<Node *> path)
         cout << "查找路径为: ";
         for (auto n : path)
         {
-            cout << n->getVal() << " ";
+            cout << get_node(n->getVal()) << " ";
         }
         cout << endl;
     }

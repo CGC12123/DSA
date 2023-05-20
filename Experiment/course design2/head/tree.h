@@ -102,9 +102,10 @@ public:
     Node *searchLevelOrder_(Node *node, int val, vector<Node *> &path);
 
     string get_node(int num);
+    
+    void searchPath_show(Node *node, int val, vector<Node *> path);
 };
 
 // 输出查找路径函数
-void searchPath_show(Node *node, int val, vector<Node *> path);
 
 #endif

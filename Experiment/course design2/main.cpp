@@ -74,7 +74,7 @@ int main()
     vector<Node *> path_level;
     cout << "层次查找：" << endl;
     Node *node_level = tree.searchLevelOrder(val3, path_level);
-    searchPath_show(node_level, val3, path_level);
+    tree.searchPath_show(node_level, val3, path_level);
     path_level.clear();
 
     return 0;
